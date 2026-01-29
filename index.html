@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+.card {
+  width: 190px;
+  height: 254px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+}
+
+.card__content {
+  background: rgb(5, 6, 45);
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 550px;
+  padding: 50px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  justify-content: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #00bfff;
+}
+
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.signin a {
+  color: #00bfff;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  color: #00bfff;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+  height: 50px;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #00bfff;
+}
+
+.submit:hover {
+  background-color: #00bfff96;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+    </style>
+    <section class="d-flex  flex-wrap gap-3 flex-column m-5 form">
+        <h1 class="title">Contact Card Creator</h1>
+      <input type="text" id="contactName" placeholder="contact name"/>
+      <input type="email" id="contactEmail" placeholder="contact email"/>
+      <input type="number" id="contactNumber" placeholder="contact number"/>
+      <input type="text" id="contactImgLink" placeholder="contact image link"/>
+      <button onclick="submitContact()" class="submit">SUBMIT</button>
+    </section>
+
+    <section
+      class="d-flex justify-content-center allign-items-center flex-wrap gap-5"
+      id="contactCard"
+    >
+      <!-- <div class="card my-4 me-3" style="width: 500px; max-width: 540px;    height: 220px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="..." class="">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body ms-5">
+                <div  class="d-flex mb-3">
+                    <h5 class="card-title me-3"> NAME:</h5>
+                    <span></span>
+                </div>
+                <div class="d-flex mb-3">
+                    <h5 class="card-title me-3"> EMAIL:</h5>
+                    <span>dqdqdqwd</span>
+                </div>
+                <div class="d-flex mb-3">
+                    <h5 class="card-title me-3"> PHONE NO:</h5> <span>07034589314</span>
+                </div>
+                <div>
+                    <button class="me-3">EDIT</button>
+                    <button>DELETE</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="card my-4 me-3" style="width: 500px; max-width: 540px;    height: 220px;">  <div class="row g-0">
+        <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="..." class="me-3">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <div  class="d-flex mb-3">
+                    <h5 class="card-title me-3"> NAME:</h5>
+                    <span></span>
+                </div>
+                <div class="d-flex mb-3">
+                    <h5 class="card-title me-3"> EMAIL:</h5>
+                    <span>dqdqdqwd</span>
+                </div>
+                <div class="d-flex mb-3">
+                    <h5 class="card-title me-3"> PHONE NO:</h5> <span>07034589314</span>
+                </div>
+                <div>
+                    <button class="me-3">EDIT</button>
+                    <button>DELETE</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>   -->
+    </section>
+
+    <script>
+      let contactArray = [];
+
+      function submitContact() {
+        if (
+          contactName.value == "" ||
+          contactEmail.value == "" ||
+          contactNumber.value == "" ||
+          contactImgLink.value == ""
+        ) {
+          alert("Please fill all Inputs");
+        } else {
+          let contactObj = {
+            contactName: contactName.value,
+            contactEmail: contactEmail.value,
+            contactNumber: contactNumber.value,
+            contactImgLink: contactImgLink.value,
+          };
+
+          contactArray.push(contactObj);
+          console.log(contactArray);
+
+          contactName.value = "";
+          contactEmail.value = "";
+          contactNumber.value = "";
+          contactImgLink.value = "";
+
+          displayCard();
+        }
+      }
+
+      function displayCard() {
+        contactCard.innerHTML = "";
+
+        for (let i = 0; i < contactArray.length; i++) {
+          contactCard.innerHTML += `<div class="card" style="width: 500px; max-width: 540px;    height: 250px;"> 
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="${contactArray[i].contactImgLink}" class="img-fluid rounded-circle h-75 mx-3 mt-4" alt="Contact Image">
+            </div>
+            <div class="col-md-8 card_content mt-2" style="color:#F5F7FA;">
+                <div class="card-body ms-3 flex-wrap card_content">
+                    <div  class="d-flex mb-3 ">
+                        <h5 class="card-title me-3 card_content"> NAME:</h5>
+                        <span>${contactArray[i].contactName}</span>
+                    </div>
+                    <div class="d-flex mb-3 flex-wrap" >
+                        <h5 class="card-title me-3"> EMAIL:</h5>
+                        <span class="text-break">${contactArray[i].contactEmail}</span>
+                    </div>
+                    <div class="d-flex mb-3 flex-wrap">
+                        <h5 class="card-title me-3"> PHONE NO:</h5> <span>${contactArray[i].contactNumber}</span>
+                    </div>
+                    <div>
+                        <button class="me-3 btn btn-info" onclick="editButton(${i})">EDIT</button>
+                        <button class="btn btn-danger" onclick="deleteButton(${i})">DELETE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+        }
+
+        console.log(contactArray);
+      }
+
+      function deleteButton(index) {
+        contactArray.splice(index, 1)
+        displayCard();
+        
+      }
+
+      function editButton(index) {
+        let newName = prompt("Enter the new contact name", contactArray[index].contactName);
+        let newEmail = prompt("Enter the new email", contactArray[index].contactEmail);
+        let newNumber = prompt("Enter the new number", contactArray[index].contactNumber);
+        let newImgLink = prompt("Enter the new image link", contactArray[index].contactImgLink)
+
+        if (newName == null || newName == "" ||
+            newEmail == null || newEmail == "" ||
+            newNumber == null || newNumber == "" ||
+            newImgLink == null || newImgLink == "" 
+        ) {
+            alert("One or more value was not imputed, please try again");
+            displayCard();
+        } else {
+            contactArray.splice(index, 1, {
+                contactName:newName,
+                contactEmail:newEmail,
+                contactNumber:newNumber,
+                contactImgLink:newImgLink
+            });
+            displayCard()
+        }
+
+        
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
